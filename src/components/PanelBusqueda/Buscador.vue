@@ -12,13 +12,26 @@
         <audio controls>
             <source :src="preview" type="audio/mpeg">
         </audio>    
-        <b-button type="is-primary" expanded>Agregar a Favoritos</b-button>  
+        <b-button type="is-primary" expanded @click="addFavs">Agregar a Favoritos</b-button>  
     </div>    
 </template>
 <script>
 export default {
     name: 'Buscador',
-    props: [ "id", "title", "img", "album", "name", "preview"]
+    props: [ "id", "title", "img", "album", "name", "preview"],
+    methods: {
+        addFavs() {
+            let favorito = {
+                id: this.id,
+                title: this.title,
+                img: this.img,
+                album: this.album,
+                name: this.name,
+                preview: this.preview,
+            }
+            this.$store.dispatch('set_favoritos' , favorito)
+        }
+    },
 }
 </script>
 

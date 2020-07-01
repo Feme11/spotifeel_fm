@@ -20,9 +20,7 @@
             <b-navbar-item tag="router-link" :to="{ path: '/login' }"  href="#">
                 Ingresar
             </b-navbar-item>
-            <b-navbar-item tag="router-link" :to="{ path: '/signup' }"  href="#">
-                Registrate
-            </b-navbar-item>
+
             <b-navbar-item>
             <p>
                 <button class="button is-danger" @click="logout">

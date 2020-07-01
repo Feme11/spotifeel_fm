@@ -12,7 +12,6 @@
         <audio controls>
             <source :src="preview" type="audio/mpeg">
         </audio>
-        <b-button type="is-primary" expanded>Agregar a Favoritos</b-button>
     </div>  
 </template>
 <script>

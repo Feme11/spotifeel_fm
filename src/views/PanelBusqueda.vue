@@ -6,7 +6,7 @@
         <b-input placeholder="Busca esa canción"
             icon="magnify"
             v-model="mostrar"
-            v-on:keyup.enter="searchData"
+            @keyup.native.enter="searchData"
             >
         </b-input>
     </div>
@@ -25,7 +25,7 @@
           :id ="busqueda.id"
           :title="busqueda.title"
           :img="busqueda.album.cover_big"
-          :album="busqueda.album.name"
+          :album="busqueda.album.title"
           :name="busqueda.artist.name"
           :preview="busqueda.preview"
           />  
