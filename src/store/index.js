@@ -16,6 +16,9 @@ export default new Vuex.Store({
     }
   },
   actions: {
+    setfavs({commit}, favoritos) {
+      commit("SET_FAVORITOS", favoritos)
+    },
     set_favoritos({commit, state}, favorito) {
       let favoritos = state.favs
       console.log(favorito)
