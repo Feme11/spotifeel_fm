@@ -27,6 +27,10 @@
                         </b-input>
                     </b-field>
                     <b-button type="is-primary" @click="login">Ingresar</b-button>
+
+                    <div class="router-signup">
+                    <router-link :to="{ path: '/signup' }"><strong>¿No tienes una cuenta? ¡Pincha aquí!</strong></router-link>
+                    </div>
                 </div>
             </div>
         </div>

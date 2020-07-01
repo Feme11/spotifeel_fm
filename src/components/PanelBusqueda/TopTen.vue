@@ -4,7 +4,6 @@
             <figure class="image is-4by3">
                 <img :src="img" :alt="album">
             </figure>
-
         </div>
         <div class="media-content">
             <p class="title is-5">{{title}}</p>
@@ -13,14 +12,15 @@
         <audio controls>
             <source :src="preview" type="audio/mpeg">
         </audio>
-
-
-    </div>    
+        <b-button type="is-primary" expanded>Agregar a Favoritos</b-button>
+    </div>  
 </template>
 <script>
 export default {
     name: 'TopTen',
     props: [ "id", "title", "img", "album", "name", "preview"],
+    methods: {
+    },
 }
 </script>
 

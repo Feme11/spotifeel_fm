@@ -6,7 +6,7 @@
         <b-input placeholder="Busca esa canción"
             icon="magnify"
             v-model="mostrar"
-            @keyup.enter="searchData"
+            v-on:keyup.enter="searchData"
             >
         </b-input>
     </div>
@@ -21,8 +21,7 @@
     <div class="container">
       <div class="columns is-multiline is-mobile is-centered">
         <Buscador
-          v-for="(busqueda, index) in busquedas"
-          :key="index"
+          v-for="(busqueda, index) in busquedas" :key="index"
           :id ="busqueda.id"
           :title="busqueda.title"
           :img="busqueda.album.cover_big"
@@ -36,8 +35,7 @@
       <h1 class="title is-3 titulo-h1">Top Ten</h1>
       <div class="columns is-multiline is-mobile is-centered">
         <TopTen
-          v-for="(track, index) in tracks"
-          :key="index"
+          v-for="(track, index) in tracks" :key="index"
           :id ="track.id"
           :title="track.title"
           :img="track.album.cover_medium"
@@ -94,6 +92,7 @@ export default {
         console.log(error)
       })
     },
+
   },
 
 

@@ -1,34 +1,76 @@
 <template>
     <div class="columns">
-        <div class="column columna-login">   
-            <div class="column has-text-centered">
-                <b-field class="label" label="Email">
-                    <b-input type="email"
-                        placeholder="usuario@correo.com"
-                        icon-pack="fas"
-                        icon="envelope"
-                        maxlength="30">
-                    </b-input>
-                </b-field>
-
-                <b-field class="label" label="Password">
-                    <b-input  type="password"
-                    maxlength="30"
-                    icon-pack="fas"
-                    icon="lock"
-                    placeholder="123456">
-                    </b-input>
-                </b-field>
-                <b-button type="is-primary">Ingresar</b-button>
-            </div>
-        </div>
         <div class="columna-spotifeel column is-two-thirds">
+        </div>
+        <div class="column columna-signup">   
+            <div class="card">
+                <div class="column has-text-centered">
+                    <b-field class="label" label="Nombre o alias">
+                        <b-input type="text"
+                            placeholder="Harry Potter"
+                            icon-pack="fas"
+                            icon="user"
+                            maxlength="30"
+                            v-model="nombre"
+                            >
+                        </b-input>
+                    </b-field>
+
+                    <b-field class="label" label="Correo Electrónico">
+                        <b-input type="email"
+                            placeholder="usuario@correo.com"
+                            icon-pack="fas"
+                            icon="envelope"
+                            maxlength="30"
+                            v-model="correo"
+                            >
+                        </b-input>
+                    </b-field>
+
+                    <b-field class="label" label="Contraseña">
+                        <b-input  type="password"
+                        maxlength="30"
+                        icon-pack="fas"
+                        icon="lock"
+                        placeholder="123456"
+                        v-model="pass"
+                        >
+                        </b-input>
+                    </b-field>
+                    <b-button type="is-primary" @click="registrar">Crear Cuenta</b-button>
+                </div>
+            </div>
         </div>
     </div>             
 </template>
 <script>
+import Firebase from 'firebase'
 export default {
     name: 'FormularioSignUp',
+    data(){
+        return {
+            nombre: "",
+            correo: "",
+            pass: "",        
+        }
+    },
+    methods: {
+        registrar() {
+            Firebase
+            .auth()
+            .createUserWithEmailAndPassword(this.correo, this.pass)
+            .then((usuario) => {
+                this.nombre ="",
+                this.correo="",
+                this.pass="",
+                this.$buefy.notification.open({
+                    message: '¡Tu cuenta ha sido creada!',
+                    type: 'is-primary'
+                })
+            })
+            this.$router.push('login')
+        }
+    },
 }
 </script>
 <style scoped>
@@ -36,5 +78,19 @@ export default {
     .columna-spotifeel{
         display: none;
     }
+}
+.columns{
+  background-image: url('https://images.pexels.com/photos/2718571/pexels-photo-2718571.jpeg?cs=srgb&dl=almacenamiento-audio-cintas-cintas-de-casete-2718571.jpg&fm=jpg');
+    background-size: cover;
+    min-height: 95vh;
+}
+.card{
+    margin: 60px 20px 20px 30px;
+    border-radius: 15px;
+    background-color: #fffffb;
+    opacity: 0.7;
+}
+.card:hover{
+    opacity: 1.0;
 }
 </style>

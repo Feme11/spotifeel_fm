@@ -20,14 +20,35 @@
             <b-navbar-item tag="router-link" :to="{ path: '/login' }"  href="#">
                 Ingresar
             </b-navbar-item>
-            <!--<b-navbar-item tag="router-link" :to="{ path: '/signup' }"  href="#">
+            <b-navbar-item tag="router-link" :to="{ path: '/signup' }"  href="#">
                 Registrate
-            </b-navbar-item>-->
+            </b-navbar-item>
+            <b-navbar-item>
+            <p>
+                <button class="button is-danger" @click="logout">
+                Cerrar Sesión
+                </button>
+            </p>
+            </b-navbar-item>
         </template>
     </b-navbar>
 </template>
 <script>
+import Firebase from 'firebase'
 export default {
     name: 'Navbar',
+    methods: {
+        logout(){
+            Firebase
+            .auth()
+            .signOut()
+            .then (
+                accept => {
+                    this.$router.push('login')
+                    this.$buefy.notification.open('¡Nos vemos!')
+                }
+            )
+        }
+    },
 }
 </script>
